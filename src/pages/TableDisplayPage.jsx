@@ -1,5 +1,5 @@
 import React from "react";
-import TableDisplay from "../components/TableDisplay";
+import TableDisplay from "../components/core/TableDisplay";
 import tableData from "../data/tableData.json";
 import TableHeaders from "../constants/TableHeaders"; // Importing TableHeaders
 const TableDisplayPage = () => {
