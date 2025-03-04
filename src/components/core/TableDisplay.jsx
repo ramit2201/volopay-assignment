@@ -15,7 +15,7 @@ const TableDisplay = ({ headers, rows, classes }) => {
       <table className={`border-collapse w-full ${classes}`}> {/* Table with collapsible borders and full width */}
         <thead>
           <tr className="bg-white"> {/* Header row with white background */}
-            {headers.map((value, index) => (
+            {headers?.map((value, index) => (
               <th 
                 key={index} 
                 className="border px-4 py-2 text-left font-bold" 
@@ -28,12 +28,12 @@ const TableDisplay = ({ headers, rows, classes }) => {
         </thead>
         <tbody>
           {rows.length > 0 ? (
-            rows.map((value, key) => (
+            rows?.map((value, key) => (
               <tr 
                 key={key} 
                 className={`${key % 2 === 0 ? "bg-gray-200" : "bg-white"}`}
               > {/* Alternating row colors for better readability */}
-                {headers.map((header, index) => (
+                {headers?.map((header, index) => (
                   <td key={index} className="border px-4 py-2">
                     {value[header]} {/* Display corresponding cell data based on header key */}
                   </td>
