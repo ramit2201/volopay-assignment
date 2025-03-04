@@ -31,7 +31,7 @@ const TableDisplay = ({ headers, rows, classes }) => {
             rows?.map((value, key) => (
               <tr 
                 key={key} 
-                className={`${key % 2 === 0 ? "bg-gray-200" : "bg-white"}`}
+                className=" even:bg-gray-200 odd: bg-white "
               > {/* Alternating row colors for better readability */}
                 {headers?.map((header, index) => (
                   <td key={index} className="border px-4 py-2">
