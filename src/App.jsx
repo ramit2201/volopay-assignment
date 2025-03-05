@@ -1,14 +1,16 @@
 import "./App.css"; // Importing global CSS styles
-import { store } from "./store/store";
-import {Provider} from "react-redux"
+import { getTopGainers , getTopLosers } from "./api/stockApi";
 
-import TableDisplayPage from "./pages/TableDisplayPage";
 function App() {
+  async function handleResponse() {
+    let data = await getTopGainers();
+    console.log("Top Gainers:", data);
+  }
   return (
-    <Provider store={store} >
-
-    </Provider>
-  )
+    <div className="App">
+      <button className="handleResponse" onClick={handleResponse}> test </button>
+    </div>
+  );
 }
 
 export default App; // Exporting App component as default
