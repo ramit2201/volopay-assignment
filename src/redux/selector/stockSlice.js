@@ -1,5 +1,5 @@
 import { createAsyncThunk , createSlice } from "@reduxjs/toolkit";
-import { getTopGainers, getTopLosers } from "../api/stockApi";
+import { getTopGainers, getTopLosers } from "../../api/stockApi";
 
 export const fetchTopGainers = createAsyncThunk('stocks/fetchTopGainers' , async () => {
     const response = await getTopGainers();

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchTopGainers, fetchTopLosers } from '../store/stockSlice';
+import { fetchTopGainers, fetchTopLosers } from '../redux/selector/stockSlice';
 import TableDisplay from '../components/core/TableDisplay';
 import { HEADERS } from '../constants/StockHeader';
 
@@ -12,8 +12,6 @@ const Home = () => {
     dispatch(fetchTopGainers());
     dispatch(fetchTopLosers());
   }, [dispatch]);
-
-  
 
   const formattedGainers = topGainers?.map(item => ({
     [HEADERS.TICKER]: item.ticker,
