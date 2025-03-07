@@ -13,10 +13,7 @@ const Home = () => {
     dispatch(fetchTopLosers());
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log('Top Gainers Data:', topGainers);
-    console.log('Top Losers Data:', topLosers);
-  }, [topGainers, topLosers]);
+  
 
   const formattedGainers = topGainers?.map(item => ({
     [HEADERS.TICKER]: item.ticker,
