@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
  * @param {String} classes - Optional additional CSS classes for table styling.
  */
 const TableDisplay = ({ headers, rows, classes }) => {
+  
   return (
     <div className="overflow-x-auto"> {/* Makes the table horizontally scrollable on small screens */}
       <table className={`border-collapse w-full ${classes}`}> {/* Table with collapsible borders and full width */}

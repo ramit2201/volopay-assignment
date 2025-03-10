@@ -1,33 +1,16 @@
-import { createAsyncThunk , createSlice } from "@reduxjs/toolkit";
-import { getTopGainers, getTopLosers } from "../../api/stockApi";
+import { createSelector } from '@reduxjs/toolkit';
 
-export const fetchTopGainers = createAsyncThunk('stocks/fetchTopGainers' , async () => {
-    const response = await getTopGainers();
-    return response;
-})
+// Base selector to get stock state from Redux store
+const selectStocksState = (state) => state.stocks;
 
-export const fetchTopLosers = createAsyncThunk('stocks/fetchTopLosers' , async () => {
-    const response = await getTopLosers();
-    return response;
-})
+// Memoized selector for top gainers
+export const selectTopGainers = createSelector(
+  [selectStocksState],
+  (stocks) => stocks.topGainers || []
+);
 
-const stockSlice = createSlice({
-    name: 'stocks',
-    initialState: {
-        topGainers: [],
-        topLosers: [],
-       loading : false
-    },
-    reducers: {},
-    extraReducers: (builder) => {
-        builder 
-        .addCase(fetchTopGainers.fulfilled, (state , action) => {
-            state.topGainers = action.payload;
-        })
-        .addCase(fetchTopLosers.fulfilled, (state, action) => {
-            state.topLosers = action.payload;
-        });
-    },
-});
-
-export default stockSlice.reducer;
+// Memoized selector for top losers
+export const selectTopLosers = createSelector(
+  [selectStocksState],
+  (stocks) => stocks.topLosers || []
+);
