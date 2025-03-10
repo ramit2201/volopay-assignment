@@ -1,7 +1,7 @@
 import React from "react";
 import TableDisplay from "../components/core/TableDisplay";
 import tableData from "../data/tableData.json";
-import TableHeaders from "../constants/TableHeaders"; // Importing TableHeaders
+import TableHeaders from "../constants/enums"; // Importing TableHeaders
 const TableDisplayPage = () => {
   const { headers, rows } = tableData;
   return (
