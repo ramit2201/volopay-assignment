@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchTopGainers, fetchTopLosers } from '../../redux/reducers/stockReducer';
-import TableDisplay from '../../components/core/TableDisplay';
-import { selectTopGainers, selectTopLosers } from '../../redux/selector/stockSlice';
-import { STOCK_TABLE_HEADERS } from '../../constants/enums';
+import { fetchTopGainers, fetchTopLosers } from '../../redux/reducers/stock';
+import TableDisplay from '../../components/core/Table';
+import { selectTopGainers, selectTopLosers } from '../../redux/selector/stock';
+import { STOCK_TABLE_HEADERS } from '../../constants/stock';
 
 const StockPage = () => {
     const dispatch = useDispatch();
