@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchCompany, fetchIncomeStatementData } from "../redux/reducers/company";
-import { selectCompanyData, selectIncomeStatement } from "../redux/selector/company";
-import CompanyDetails from "../components/core/CompanyDetails";
-import IncomeStatementChart from "../components/core/IncomeStatementChart";
+import { selectCompanyData, selectIncomeStatement } from "../redux/selectors/company";
+import CompanyDetails from "../components/CompanyDetails";
+import IncomeStatementChart from "../components/IncomeStatementChart";
 import Loader from "../components/core/loader";
 
 const CompanyOverview = () => {

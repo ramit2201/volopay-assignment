@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchTopGainers, fetchTopLosers } from '../redux/reducers/stock';
-import TableDisplay from '../components/core/Table';
-import { selectTopGainers, selectTopLosers } from '../redux/selector/stock';
+import Table from '../components/core/Table';
+import { selectTopGainers, selectTopLosers } from '../redux/selectors/stock';
 import { STOCK_TABLE_HEADERS } from '../constants/stock';
 import { useNavigate } from "react-router-dom";
 import Loader from '../components/core/loader'; // Importing Loader component
@@ -20,7 +20,7 @@ const StockPage = () => {
     useEffect(() => {
         dispatch(fetchTopGainers()).finally(() => setLoadingGainers(false));
         dispatch(fetchTopLosers()).finally(() => setLoadingLosers(false));
-    }, [dispatch]);
+    }, []);
 
     const formattedGainers = topGainers?.map(item => ({
         Ticker: item.ticker,
@@ -52,7 +52,7 @@ const StockPage = () => {
                             <Loader />
                         </div>
                     ) : (
-                        <TableDisplay headers={STOCK_TABLE_HEADERS} rows={formattedGainers} onRowClick={handleRowClick} />
+                        <Table headers={STOCK_TABLE_HEADERS} rows={formattedGainers} onRowClick={handleRowClick} />
                     )}
                 </div>
 
@@ -64,7 +64,7 @@ const StockPage = () => {
                             <Loader />
                         </div>
                     ) : (
-                        <TableDisplay headers={STOCK_TABLE_HEADERS} rows={formattedLosers} onRowClick={handleRowClick} />
+                        <Table headers={STOCK_TABLE_HEADERS} rows={formattedLosers} onRowClick={handleRowClick} />
                     )}
                 </div>
             </div>

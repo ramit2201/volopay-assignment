@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
  * @param {Array} rows - Array of objects where each object represents a row.
  * @param {String} classes - Optional additional CSS classes for table styling.
  */
-const TableDisplay = ({ headers, rows, classes , onRowClick}) => {
+const Table = ({ headers, rows, classes , onRowClick}) => {
   
   return (
     <div className="overflow-x-auto"> {/* Makes the table horizontally scrollable on small screens */}
@@ -56,7 +56,7 @@ const TableDisplay = ({ headers, rows, classes , onRowClick}) => {
 };
 
 // PropTypes to enforce prop type validation
-TableDisplay.propTypes = {
+Table.propTypes = {
   headers: PropTypes.arrayOf(PropTypes.string).isRequired, // Array of strings representing table headers
   rows: PropTypes.arrayOf(PropTypes.object).isRequired, // Array of objects representing table rows
   classes: PropTypes.string, // Optional string for additional CSS classes
@@ -64,9 +64,9 @@ TableDisplay.propTypes = {
 };
 
 // Default props for optional props
-TableDisplay.defaultProps = {
+Table.defaultProps = {
   classes: "", // Empty string by default if no custom classes are provided
   onRowClick: () => {},
 };
 
-export default TableDisplay; // Exporting component for use in other parts of the app
+export default Table; // Exporting component for use in other parts of the app
