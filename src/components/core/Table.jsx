@@ -9,7 +9,7 @@ import PropTypes from "prop-types";
  * @param {Array} rows - Array of objects where each object represents a row.
  * @param {String} classes - Optional additional CSS classes for table styling.
  */
-const TableDisplay = ({ headers, rows, classes }) => {
+const TableDisplay = ({ headers, rows, classes , onRowClick}) => {
   
   return (
     <div className="overflow-x-auto"> {/* Makes the table horizontally scrollable on small screens */}
@@ -32,10 +32,11 @@ const TableDisplay = ({ headers, rows, classes }) => {
             rows?.map((value, key) => (
               <tr 
                 key={key} 
-                className=" even:bg-gray-200 odd: bg-white "
+                className=" even:bg-gray-200 odd: bg-white hover:cursor-pointer "
+                onClick={() => onRowClick(value.Ticker)}
               > {/* Alternating row colors for better readability */}
                 {headers?.map((header, index) => (
-                  <td key={index} className="border px-4 py-2">
+                  <td key={index} className="border px-4 py-2" >
                     {value[header]} {/* Display corresponding cell data based on header key */}
                   </td>
                 ))}
@@ -59,11 +60,13 @@ TableDisplay.propTypes = {
   headers: PropTypes.arrayOf(PropTypes.string).isRequired, // Array of strings representing table headers
   rows: PropTypes.arrayOf(PropTypes.object).isRequired, // Array of objects representing table rows
   classes: PropTypes.string, // Optional string for additional CSS classes
+  handleRowClick: PropTypes.func, // Optional function for handling row click events
 };
 
 // Default props for optional props
 TableDisplay.defaultProps = {
   classes: "", // Empty string by default if no custom classes are provided
+  onRowClick: () => {},
 };
 
 export default TableDisplay; // Exporting component for use in other parts of the app
