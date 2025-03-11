@@ -16,6 +16,7 @@ const BASE_URL = 'https://www.alphavantage.co/query';
 
 const fetchCompanyData = async () => {
     const response = await axios.get(`${BASE_URL}?function=OVERVIEW&symbol=IBM&apikey=${API_KEY}`);
+    
     return response.data; // Assuming response has the required stock data
   };
 
