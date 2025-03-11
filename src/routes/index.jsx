@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Routes, Route , Navigate, BrowserRouter } from "react-router-dom";
-import Stock from '../pages/stocks/Index';
-import CompanyOverview from '../pages/stocks/CompanyOverview';
+import Stock from '../pages/Index';
+import CompanyOverview from '../pages/CompanyOverview';
 
 const AppRoutes = () => {
   return (
