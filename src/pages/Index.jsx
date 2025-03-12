@@ -42,8 +42,19 @@ const StockPage = () => {
     };
 
     return (
-        <div>
-            <div className="flex gap-6 justify-center items-center p-4">
+        <div className="p-6">
+            {/* View Products Button - Centered */}
+            <div className="flex justify-center mb-6">
+                <button
+                    onClick={() => navigate("/products")}
+                    className="px-6 py-3 bg-sky-500 text-white rounded-md transition hover:bg-sky-600"
+                >
+                    View Products
+                </button>
+            </div>
+    
+            {/* Stock Tables - Side by Side */}
+            <div className="flex gap-6 justify-center items-start">
                 {/* Top Gainers Section */}
                 <div className="flex flex-col gap-4 w-1/2">
                     <h2 className="text-center text-2xl text-green-500">Top Gainers</h2>
@@ -55,7 +66,7 @@ const StockPage = () => {
                         <Table headers={STOCK_TABLE_HEADERS} rows={formattedGainers} onRowClick={handleRowClick} />
                     )}
                 </div>
-
+    
                 {/* Top Losers Section */}
                 <div className="flex flex-col gap-4 w-1/2">
                     <h2 className="text-center text-2xl text-red-500">Top Losers</h2>
@@ -70,6 +81,7 @@ const StockPage = () => {
             </div>
         </div>
     );
+    
 };
 
 export default StockPage;
