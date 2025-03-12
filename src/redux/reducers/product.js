@@ -22,11 +22,13 @@ const fetchProductsAPI = async (limit, skip, category) => {
     : `${BASE_URL}?limit=${limit}&skip=${skip}`;
 
   const response = await axios.get(url);
+//   console.log("Res"+JSON.stringify(response.data, null, 2));
   return response.data.products;
 };
 
 const fetchCategoriesAPI = async () => {
   const response = await axios.get(`${BASE_URL}/categories`);
+  console.log("Res12"+JSON.stringify(response.data, null, 2));
   return response.data.slice(0, 5); // Top 5 categories
 };
 
