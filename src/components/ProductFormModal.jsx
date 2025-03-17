@@ -14,7 +14,7 @@ import axios from 'axios';
 const ProductFormModal = () => {
   const dispatch = useDispatch();
   const { isModalOpen, modalMode, modalProductData } = useSelector(selectModalState);
-
+  console.log("modalProductData" + modalProductData + " is open" + isModalOpen + " mode" + modalMode)
   const [formData, setFormData] = useState({
     title: '',
     price: '',
