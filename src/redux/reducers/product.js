@@ -11,6 +11,9 @@ const initialState = {
   loading: false,
   hasMore: true,
   error: null,
+  isModalOpen: false,
+  modalMode: 'add', // 'add' or 'edit'
+  modalProductData: null,
 };
 
 // API Endpoints
@@ -61,6 +64,16 @@ const productsSlice = createSlice({
     setError: (state, action) => {
       state.error = action.payload;
     },
+    openModal: (state, action) => {
+      state.isModalOpen = true;
+      state.modalMode = action.payload.mode; // 'add' or 'edit'
+      state.modalProductData = action.payload.productData || null;
+    },
+    closeModal: (state) => {
+      state.isModalOpen = false;
+      state.modalMode = 'add';
+      state.modalProductData = null;
+    },
   },
 });
 
@@ -72,6 +85,8 @@ export const {
   increaseSkip,
   setLoading,
   setError,
+  openModal,
+  closeModal,
 } = productsSlice.actions;
 
 // Async Actions

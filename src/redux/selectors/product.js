@@ -31,3 +31,17 @@ export const selectError = createSelector(
   [selectProductsState],
   (products) => products.error
 );
+export const selectIsModalOpen = createSelector(
+  [selectProductsState],
+  (productState) => productState.isModalOpen
+);
+
+export const selectModalMode = createSelector(
+  [selectProductsState],
+  (productState) => productState.modalMode
+);
+
+export const selectModalProductData = createSelector(
+  [selectProductsState],
+  (productState) => productState.modalProductData
+);
