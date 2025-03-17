@@ -84,8 +84,8 @@ const Product = () => {
       <button
         className="bg-gray-400 text-black px-3 py-1 rounded hover:bg-yellow-600"
         onClick={() => {
-          console.log("Edit clicked for product:", product); // ← Add this line
-          dispatch(openModal({ mode: 'edit', productData: product })); // Fix: productData
+          
+          dispatch(openModal({ mode: 'edit', productData: product })); 
         }}
       >
         Edit
