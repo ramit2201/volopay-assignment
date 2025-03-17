@@ -5,6 +5,7 @@ export const PRODUCT_HEADERS = {
     PRICE: "Price",
     RATING: "Rating",
     STOCK: "Stock",
+    ACTIONS: "Actions",
   };
   
   // Convert PRODUCT_HEADERS object values into an array for table use

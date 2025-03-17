@@ -74,6 +74,15 @@ const productsSlice = createSlice({
       state.modalMode = 'add';
       state.modalProductData = null;
     },
+    addProduct : (state, action) => {
+      state.products = [action.payload, ...state.products];
+    },
+    updateProduct : (state, action) => {
+      const updated = action.payload;
+      state.products = state.products.map((product) =>
+        product.id === updated.id ? updated : product
+      );
+    },
   },
 });
 
@@ -87,6 +96,8 @@ export const {
   setError,
   openModal,
   closeModal,
+  addProduct,
+  updateProduct,
 } = productsSlice.actions;
 
 // Async Actions

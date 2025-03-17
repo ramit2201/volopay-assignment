@@ -4,6 +4,7 @@ import {
   fetchProducts,
   fetchCategories,
   setCategory, 
+  openModal
 } from "../redux/reducers/product";
 import {
   selectProducts,
@@ -16,6 +17,7 @@ import TableDisplay from "../components/core/Table";
 import Loader from "../components/core/Loader";
 import CategoryButtons from "../components/CategoryButtons"; 
 import { PRODUCT_HEADERS, PRODUCT_TABLE_HEADERS } from "../constants/product"; 
+import ProductFormModal from "../components/ProductFormModal";
 
 
 
@@ -78,6 +80,13 @@ const Product = () => {
     [PRODUCT_HEADERS.PRICE]: `$${product.price}`,
     [PRODUCT_HEADERS.RATING]: product.rating,
     [PRODUCT_HEADERS.STOCK]: product.stock,
+    [PRODUCT_HEADERS.ACTIONS]: (
+      <button
+        className="bg-gray-400 text-black px-3 py-1 rounded hover:bg-yellow-600"
+        onClick={() => dispatch(openModal({ mode: 'edit', product }))}
+      >
+        Edit
+      </button> )
   }));
 
   return (
@@ -91,7 +100,16 @@ const Product = () => {
         />
         
       </div>
-
+      <div className=" flex justify-center items-center">
+      <button
+          className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 flex gap-1 m-2"
+          onClick={() => dispatch(openModal({ mode: 'add' }))}
+        >
+          <i class="fa-solid fa-plus mt-1"></i>
+          Add Item
+        </button>
+      </div>
+      <ProductFormModal />
       {/* Product Table */}
       {loading && products.length === 0 ? (
         <div className="flex justify-center items-center h-40">
