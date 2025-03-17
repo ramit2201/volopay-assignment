@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { fetchCompany, fetchIncomeStatementData } from "../redux/reducers/company";
 import { selectCompanyData, selectIncomeStatement } from "../redux/selectors/company";
 import CompanyDetails from "../components/CompanyDetails";
@@ -8,6 +9,7 @@ import Loader from "../components/core/loader";
 
 const CompanyOverview = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate(); // Navigation hook
   const companyData = useSelector(selectCompanyData);
   const incomeStatement = useSelector(selectIncomeStatement);
 
@@ -29,6 +31,23 @@ const CompanyOverview = () => {
   return (
     <div className="p-4">
       <div className="px-8">
+        {/* Navigation Buttons */}
+        <div className="flex gap-4 mb-4">
+          <button 
+            className="px-4 py-2 bg-sky-500 text-white rounded-md transition hover:bg-sky-600"
+            onClick={() => navigate("/home")}
+          >
+            Home
+          </button>
+          <button 
+            className="px-4 py-2 bg-sky-500 text-white rounded-md transition hover:bg-sky-600"
+            onClick={() => navigate("/products")}
+          >
+           View Products
+          </button>
+          
+        </div>
+
         {/* Company Details */}
         {loadingCompany ? <Loader /> : companyData && (
           <CompanyDetails
