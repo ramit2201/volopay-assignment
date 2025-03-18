@@ -1,5 +1,13 @@
 import React from "react";
-import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from "recharts";
+import {
+  BarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+  CartesianGrid
+} from "recharts";
 import { AXIS_LABELS } from "../constants/company";
 
 const IncomeStatementChart = ({ data }) => {
@@ -11,7 +19,7 @@ const IncomeStatementChart = ({ data }) => {
         <YAxis 
           dataKey="revenue" 
           label={AXIS_LABELS.yAxis}
-          tickFormatter={(value) => `$${(value / 1e9).toFixed(1)}B`} // Convert to billions
+          tickFormatter={(value) => `$${(value / 1e9).toFixed(1)}B`}
         />
         <Tooltip formatter={(value) => `$${value.toLocaleString()}`} />
         <Bar dataKey="revenue" fill="#6266F1" />

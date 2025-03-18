@@ -1,11 +1,30 @@
-const CompanyDetails = ({ name, description, symbol, exchange, industry, country }) => {
+import { useSelector } from "react-redux";
+import { selectCompanyData, selectLoadingCompany } from "../redux/selectors/company";
+import Loader from "./core/Loader";
+
+const CompanyDetails = () => {
+  const companyData = useSelector(selectCompanyData);
+  const loadingCompany = useSelector(selectLoadingCompany);
+
+  if (loadingCompany) {
+    return (
+      <div className="flex justify-center items-center h-40">
+        <Loader />
+      </div>
+    );
+  }
+
+  if (!companyData) {
+    return <p className="text-white">No company data available.</p>;
+  }
+
   const companyInfo = [
-    { label: "Name", value: name },
-    { label: "Description", value: description },
-    { label: "Symbol", value: symbol, icon: "fa-regular fa-id-card" },
-    { label: "Exchange", value: exchange, icon: "fa-regular fa-gem" },
-    { label: "Industry", value: industry, icon: "fa-solid fa-building" },
-    { label: "Country", value: country, icon: "fa-solid fa-location-dot" }
+    { label: "Name", value: companyData.Name },
+    { label: "Description", value: companyData.Description },
+    { label: "Symbol", value: companyData.Symbol, icon: "fa-regular fa-id-card" },
+    { label: "Exchange", value: companyData.Exchange, icon: "fa-regular fa-gem" },
+    { label: "Industry", value: companyData.Industry, icon: "fa-solid fa-building" },
+    { label: "Country", value: companyData.Country, icon: "fa-solid fa-location-dot" }
   ];
 
   return (
@@ -13,7 +32,7 @@ const CompanyDetails = ({ name, description, symbol, exchange, industry, country
       {companyInfo.map((info, index) => (
         <p key={index} className="text-white">
           {info.icon && <i className={`${info.icon} mr-2`}></i>}
-         {info.value}
+          {info.value}
         </p>
       ))}
     </div>
