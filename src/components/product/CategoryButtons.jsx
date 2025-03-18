@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   selectCategories,
   selectSelectedCategory,
-} from "../redux/selectors/product";
-import { setCategory, fetchProducts } from "../redux/reducers/product";
+} from "../../redux/selectors/product";
+import { setCategory, fetchProducts } from "../../redux/reducers/product";
 import { useNavigate } from "react-router-dom";
 
 const CategoryButtons = () => {
